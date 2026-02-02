@@ -220,7 +220,7 @@ int main()
 						if (defDevice)
 						{
 							wchar_t* deviceName = getDeviceName(defDevice);
-							if (lastDeviceName && deviceName)
+							if (deviceName)
 							{
 								if (lstrcmpW(deviceName, lastDeviceName) != 0)
 								{
@@ -249,6 +249,7 @@ int main()
 									else
 										swapIcon(&iconData, noheadphones);
 								}
+								CoTaskMemFree(deviceName);
 							}
 
 							//wprintf(L"\"%s\"\n", deviceName);
@@ -258,7 +259,7 @@ int main()
 
 						updateWindow(msgWindow);
 
-						Sleep(100);
+						//Sleep(100);
 					}
 
 					removeIcon(&iconData);
